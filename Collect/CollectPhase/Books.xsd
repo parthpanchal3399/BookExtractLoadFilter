@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://books.toscrape.com" xmlns="https://books.toscrape.com" elementFormDefault="qualified">
+  <xs:element name="Books">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Book" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Book">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="Title"/>
+        <xs:element ref="Price"/>
+        <xs:element ref="TaxAmt"/>
+        <xs:element ref="Availability"/>
+        <xs:element ref="NoOfReviews"/>
+        <xs:element name="Description" type="xs:string"/>
+      </xs:choice>
+      <xs:attribute name="Genre" type="xs:string" use="required"/>
+      <xs:attribute name="UPC" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Title">
+    <xs:complexType mixed="true">
+      <xs:attribute name="ProductType" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Price">
+    <xs:complexType mixed="true">
+      <xs:attribute name="Currency" type="xs:string" use="required"/>
+      <xs:attribute name="WithTax" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TaxAmt">
+    <xs:complexType mixed="true">
+      <xs:attribute name="Currency" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Availability">
+    <xs:complexType mixed="true">
+      <xs:attribute name="InStock" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NoOfReviews">
+    <xs:complexType mixed="true">
+      <xs:attribute name="Stars" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
