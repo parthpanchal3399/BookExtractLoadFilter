@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3>Resulting XQuery:</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-floating">
+          <textarea class="form-control" id="floatingTextarea2" style="height: 200px; font-size: 25px; text-align: center" disabled>{{xquery}}</textarea>
+        </div>
+    </div>
+    <div class="row">
+        <form method="GET" id="myform">
+            <div class="form-floating">
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="r_searchTitle">
+                        Search by Title
+                    </label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="r_searchTitle" checked>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" id="i_Title" name="i_Title" style="width: 100%;">
+                    </div>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="r_searchDesc">
+                        Search by Description
+                    </label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="r_searchDesc">
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" id="i_Desc" name="i_Desc" style="width: 100%;">
+                    </div>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="r_searchGenre">
+                        Search by Genre
+                    </label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="r_searchGenre">
+                    <select class="form-select" form="myform" name="i_Genre" id="i_Genre">
+                        <option value="Romance">Romance</option>
+                        <option value="Default">Default</option>
+                        <option value="Historical Fiction">Historical Fiction</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Add a comment">Add a comment</option>
+                        <option value="Fantasy">Fantasy</option>
+<!--                        <option value="Nonfiction">Nonfiction</option>-->
+<!--                        <option value="Humor">Humor</option>-->
+<!--                        <option value="Science">Science</option>-->
+<!--                        <option value="Sequential Art">Sequential Art</option>-->
+<!--                        <option value="Health">Health</option>-->
+<!--                        <option value="Mystery">Mystery</option>-->
+<!--                        <option value="Fiction">Fiction</option>-->
+<!--                        <option value="Womens Fiction">Womens Fiction</option>-->
+<!--                        <option value="Philosophy">Philosophy</option>-->
+<!--                        <option value="New Adult">New Adult</option>-->
+<!--                        <option value="Sports and Games">Sports and Games</option>-->
+<!--                        <option value="Young Adult">Young Adult</option>-->
+<!--                        <option value="History">History</option>-->
+<!--                        <option value="Autobiography">Autobiography</option>-->
+<!--                        <option value="Novels">Novels</option>-->
+<!--                        <option value="Food and Drink">Food and Drink</option>-->
+<!--                        <option value="Business">Business</option>-->
+<!--                        <option value="Science Fiction">Science Fiction</option>-->
+<!--                        <option value="Childrens">Childrens</option>-->
+<!--                        <option value="Classics">Classics</option>-->
+<!--                        <option value="Travel">Travel</option>-->
+<!--                        <option value="Biography">Biography</option>-->
+<!--                        <option value="Short Stories">Short Stories</option>-->
+<!--                        <option value="Poetry">Poetry</option>-->
+<!--                        <option value="Psychology">Psychology</option>-->
+<!--                        <option value="Politics">Politics</option>-->
+<!--                        <option value="Music">Music</option>-->
+<!--                        <option value="Horror">Horror</option>-->
+<!--                        <option value="Historical">Historical</option>-->
+<!--                        <option value="Contemporary">Contemporary</option>-->
+<!--                        <option value="Art">Art</option>-->
+<!--                        <option value="Religion">Religion</option>-->
+<!--                        <option value="Christian Fiction">Christian Fiction</option>-->
+<!--                        <option value="Spirituality">Spirituality</option>-->
+<!--                        <option value="Christian">Christian</option>-->
+<!--                        <option value="Academic">Academic</option>-->
+<!--                        <option value="Erotica">Erotica</option>-->
+<!--                        <option value="Self Help">Self Help</option>-->
+<!--                        <option value="Crime">Crime</option>-->
+<!--                        <option value="Cultural">Cultural</option>-->
+<!--                        <option value="Suspense">Suspense</option>-->
+<!--                        <option value="Paranormal">Paranormal</option>-->
+<!--                        <option value="Adult Fiction">Adult Fiction</option>-->
+<!--                        <option value="Parenting">Parenting</option>-->
+                    </select>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="r_filterPrice">
+                        Filter By Price
+                    </label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="r_filterPrice" oninput="document.getElementById('hid_Price').value = this.value">
+                    <input hidden type="text" class="form-control" value="" id="hid_Price" name="hid_Price">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Min</span>
+                      <input type="number" class="form-control" placeholder="Minumun Price" value="0" aria-label="Min" aria-describedby="basic-addon1" id="i_minPrice" name="i_minPrice" style="width: 100%;">
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon2">Max</span>
+                      <input type="number" class="form-control" placeholder="Maximum Price" value="60" aria-label="Max" aria-describedby="basic-addon2" id="i_maxPrice" name="i_maxPrice" style="width: 100%;">
+                    </div>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="r_inStock">
+                        In Stock
+                    </label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="r_inStock">
+                    <input hidden type="text" class="form-control" value="" id="hid_instock" name="hid_instock">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="i_inStock" name="i_inStock" oninput="document.getElementById('hid_instock').value = 1">
+                    </div>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="r_filterStars">
+                        Filter By Stars
+                    </label>
+                    <input hidden type="text" class="form-control" value="" id="hid_stars" name="hid_stars">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="r_filterStars" oninput="document.getElementById('hid_stars').value = this.value">
+                    <input type="range" class="form-range" min="1" max="5" step="1" id="i_starsRange" name="i_starsRange" oninput="document.getElementById('span_Stars').innerHTML = this.value">
+                    <span id="span_Stars">3</span>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="r_filterAvail">
+                        Filter By Availability
+                    </label>
+                    <input hidden type="text" class="form-control" value="" id="hid_Avail" name="hid_Avail">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="r_filterAvail" oninput="document.getElementById('hid_Avail').value = this.value">
+                    <input type="range" class="form-range" min="1" max="22" step="1" id="i_availRange" name="i_availRange" oninput="document.getElementById('span_Avail').innerHTML = this.value">
+                    <span id="span_Avail">12</span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Apply</button>
+            <a class="btn btn-primary" href="/XQuery">Reset</a>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">UPC</th>
+              <th scope="col">Genre</th>
+              <th scope="col">Title</th>
+              <th scope="col">ProductType</th>
+              <th scope="col">PriceWOTax</th>
+              <th scope="col">TaxAmt</th>
+              <th scope="col">TotalPrice</th>
+              <th scope="col">In Stock</th>
+              <th scope="col">Availability</th>
+              <th scope="col">Stars</th>
+              <th scope="col">NoOfReviews</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for book in all_outputs %}
+            <tr>
+                <td>{{ book.UPC }}</td>
+                <td>{{ book.Genre }}</td>
+                <td>{{ book.Title }}</td>
+                <td>{{ book.ProductType }}</td>
+                <td>{{ book.PriceWOTax }}</td>
+                <td>{{ book.TaxAmt }}</td>
+                <td>{{ book.TotalPrice }}</td>
+                <td>{% if book.InStock == 1 %} YES {% else %} NO {% endif %}</td>
+                <td>{{ book.Availability }}</td>
+                <td>{{ book.Stars }}</td>
+                <td>{{ book.NoOfReviews }}</td>
+
+                <td>
+                    <div class="text-container">
+                        {{ book.Description }}
+                    </div>
+                    <span class="toggle-link">See more</span>
+                </td>
+
+
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+</div>
+
+{% load static %}
+<script src="{% static 'js/MyScript.js' %}"></script>
+
+{% endblock content %}
